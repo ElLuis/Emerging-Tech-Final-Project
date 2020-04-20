@@ -35,13 +35,13 @@ exports.renderDashboard = function(req, res, next){
 
 			console.log(patients);
 		    res.render('nurse_dashboard', {
-			// Set the page title variable
-			title: 'Dashboard',
-			//Send list of patients
-			patients: patients,
-			// Set the flash message variable
-			messages: req.flash('error') || req.flash('info')
-		});
+				// Set the page title variable
+				title: 'Dashboard',
+				//Send list of patients
+				patients: patients,
+				// Set the flash message variable
+				messages: req.flash('error') || req.flash('info')
+			});
 		});
 
 	} else {
@@ -60,12 +60,25 @@ exports.renderVitals = function(req, res, next){
 }
 
 exports.renderPrevVitals = function(req, res, next){
-	// Use the 'response' object to render the prev vitals page
-	res.render('nurse_prev_vitals', {
-		// Set the page title variable
-		title: 'Previous Vitals',
-		// Set the flash message variable
-		messages: req.flash('error') || req.flash('info')
+
+	var getVitals = Vital.find({}).select({"patient":0});
+
+	getVitals.exec(function (err, vitals) {
+		if (err) {
+			console.log(err);
+		return next(err);
+		};
+		console.log(vitals);
+
+		// Use the 'response' object to render the prev vitals page
+		res.render('nurse_prev_vitals', {
+			// Set the page title variable
+			title: 'Previous Vitals',
+			// Send list of vitals
+			vitals: vitals,
+			// Set the flash message variable
+			messages: req.flash('error') || req.flash('info')
+		});
 	});
 }
 
