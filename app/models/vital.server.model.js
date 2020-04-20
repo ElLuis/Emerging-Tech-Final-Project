@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 // Define a new 'VitalSchema'
 const VitalSchema = new Schema({
-	patient: String,
+	patientId: String,
     bodyTemperature: String,
     heartRate: String,
     bloodPressure: String, 

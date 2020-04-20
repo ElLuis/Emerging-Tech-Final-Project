@@ -11,12 +11,14 @@
 
 <div style="padding: 2%">
     <h3>Send tips to your patients</h3>
-  <form>
+  <form method="POST" action="nurse_tips">
 		<div class="form-group">
+      <label for="patientId">Enter Patient Id:</label>
+      <input type="text" name="patientId"><br>
 			<label for="comment">Comment:</label>
-			<textarea class="form-control" rows="5" id="comment"></textarea>
+			<textarea class="form-control" rows="5" name="comment" id="comment"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <input type="submit" class="btn btn-primary"></input>
   </form>
 </div>
 

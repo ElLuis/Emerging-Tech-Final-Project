@@ -2,6 +2,7 @@
 const Nurse = require('mongoose').model('Nurse');
 const Patient = require('mongoose').model('Patient');
 const Vital = require('mongoose').model('Vital');
+const Tip = require('mongoose').model('Tip');
 const passport = require('passport');
 
 
@@ -78,13 +79,39 @@ exports.renderTips = function(req, res, next){
 		});
 }
 
+//Post tips
+	exports.sendTips = function (req,res)
+	{
+		const tip = new Tip(req.body);
+
+		// Try saving the new vital document
+	tip.save((err) => {
+		
+		if(err) {
+			// Use the error handling method to get the error message
+			message = getErrorMessage(err);
+			console.log('Error: '+ err)
+			// save the error in flash
+			req.flash('error', message); //save the error into flash memory
+		}
+		
+		else {
+			console.log('New tip sent to: '+tip.patientId);
+			// If the tip was created successfully display success tips submitted page
+			return res.redirect('/nurse_dashboard'); //After successful registration, render Nurse Dashboard
+		}
+	});
+
+
+	}
+
 exports.postVitals = function(req, res, next){
 	const vital = new Vital(req.body);
-	console.log(req.body);
+	console.log(vital);
 	const message = null;
 
-	// Set the vital provider property
-	vital.provider = 'local';
+/* 	// Set the vital provider property
+	vital.provider = 'local'; */
 
 	// Try saving the new vital document
 	vital.save((err) => {
@@ -98,9 +125,9 @@ exports.postVitals = function(req, res, next){
 		}
 		
 		else {
+			req.session.patientId = vital.patientId; //Save session object
 			// If the vital was created successfully display success vitals submitted page
-			Window.alert("Successfully submitted Vitals!");
-			return res.redirect('/nurse_dashboard'); //After successful registration, render Nurse Dashboard
+			return res.redirect('/nurse_tips'); //After successful registration, render Nurse Dashboard
 		}
-	})
+	});
 }

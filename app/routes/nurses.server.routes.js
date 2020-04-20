@@ -1,7 +1,6 @@
 // Load the module dependencies
 const nurses = require("../controllers/nurses.server.controller");
 const Nurse = require("mongoose").model("Nurse");
-const Vital = require("mongoose").model("Vital");
 
 // Define the routes module' method
 module.exports = function (app) {
@@ -10,7 +9,7 @@ module.exports = function (app) {
     app.route("/nurse_dashboard").get(nurses.renderDashboard);
     app.route("/nurse_vitals").get(nurses.renderVitals).post(nurses.postVitals);
     app.route("/nurse_prev_vitals").get(nurses.renderPrevVitals);
-    app.route("/nurse_tips").get(nurses.renderTips);
+    app.route("/nurse_tips").get(nurses.renderTips).post(nurses.sendTips);
 
     app
     .route("/signin_nurse")
