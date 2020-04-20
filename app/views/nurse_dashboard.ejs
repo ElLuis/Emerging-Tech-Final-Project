@@ -11,8 +11,14 @@
 
 <div style="padding: 2%">
   <h2>Nurse Dashboard</h2>
-  <h3>Here are the Patients: </h3>
+  <h4>Here are the Patients: </h4>
 
+
+  <% Patients.forEach(function (patient) { %>
+    <%= patient.name %> 
+  <% }) %>
+
+  
 </div>
 
 </body>
