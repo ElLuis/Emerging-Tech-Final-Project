@@ -1,5 +1,6 @@
 //Load the module dependencies
 const Nurse = require('mongoose').model('Nurse');
+const Vital = require('mongoose').model('Vital');
 const passport = require('passport');
 
 
@@ -61,4 +62,31 @@ exports.renderTips = function(req, res, next){
 			// Set the flash message variable
 			messages: req.flash('error') || req.flash('info')
 		});
+}
+
+exports.postVitals = function(req, res, next){
+	const vital = new Vital(req.body);
+	console.log(req.body);
+	const message = null;
+
+	// Set the vital provider property
+	vital.provider = 'local';
+
+	// Try saving the new vital document
+	vital.save((err) => {
+		
+		if(err) {
+			// Use the error handling method to get the error message
+			message = getErrorMessage(err);
+			console.log('Error: '+ err)
+			// save the error in flash
+			req.flash('error', message); //save the error into flash memory
+		}
+		
+		else {
+			// If the vital was created successfully display success vitals submitted page
+			Window.alert("Successfully submitted Vitals!");
+			return res.redirect('/nurse_dashboard'); //After successful registration, render Nurse Dashboard
+		}
+	})
 }
