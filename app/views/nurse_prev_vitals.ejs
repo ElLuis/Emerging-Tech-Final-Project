@@ -11,13 +11,24 @@
 <div style="padding: 2%">
 
 	<h3>Here is a record of vitals taken previously: </h3>
-	<hr>
-  <ul>
+  <hr>
+  <table border="1">
+    <tr>
+    <th>Body Temperature</th>
+    <th>Heart Rate</th>
+    <th>Blood Pressure</th>
+    <th>Respiratory Rate</th>
+    </tr>
+
     <% vitals.forEach(function(vital) { %>
-        <li><%= vital.bodyTemperature %> <%= vital.heartRate %> <%= vital.bloodPressure %> <%= vital.respitoryRate %></li>
+      <tr>
+        <td><%= vital.bodyTemperature %></td>  
+        <td><%= vital.heartRate %></td>
+        <td><%= vital.bloodPressure %></td>   
+        <td><%= vital.respitoryRate %></td> 
+      </tr> 
     <% }); %>
-</ul>
-  
+  </table>
 </div>
 
 </body>
