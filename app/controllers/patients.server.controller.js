@@ -1,5 +1,6 @@
 // Load the module dependencies
 const Patient = require('mongoose').model('Patient');
+const Tip = require('mongoose').model('Tip');
 const passport = require('passport');
 
 // Create a new error handling controller method
@@ -32,6 +33,8 @@ const getErrorMessage = function(err) {
 
 exports.renderdashboard = function(req, res, next){
 	if (!req.patient) {
+        req.session.username = req.user.username;
+        console.log("User: "+req.session.username);
 		// Use the 'response' object to render the signin page
 		res.render('patient_dashboard', {
 			// Set the page title variable
@@ -608,17 +611,36 @@ exports.renderalert = function(req, res){
 };
 
 
-exports.rendertips = function(req, res){
-    // Use the 'response' object to render the alert page
-    res.render('patienttips', {
-        // Set the page title variable
-        title: 'View tips',
-        // Set the flash message variable
-        messages: req.flash('error') || req.flash('info')
-    });
-};
+     exports.renderTips = function(req, res, next){
+	if (!req.patient) {
+        // Use the 'response' object to render the tips page
+        var username = req.session.username;
 
-exports.create = function (req, res) {
+		//Get all patients
+		var getTips = Tip.find({}).select({"_id":0,"created":1,"comment":1,"lastName":1}).where({"patientId":username});
+		getTips.exec(function (err, tips) {
+			if (err) {
+				console.log(err);
+			return next(err);
+			};
+
+			console.log(tips);
+		    res.render('patienttips', {
+			// Set the page title variable
+			title: 'List of tips',
+			//Send list of tips
+			tips: tips,
+			// Set the flash message variable
+			messages: req.flash('error') || req.flash('info')
+		});
+		});
+
+	} else {
+		return res.redirect('/');
+	}
+}
+
+ exports.create = function (req, res) {
     const tipsandalert = new Tipsandalert();
     tipsandalert.alert = req.body.alert;
     //article.creator = req.body.username;
