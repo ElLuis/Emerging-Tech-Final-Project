@@ -1,5 +1,6 @@
 //Load the module dependencies
 const Nurse = require('mongoose').model('Nurse');
+const Patient = require('mongoose').model('Patient');
 const Vital = require('mongoose').model('Vital');
 const passport = require('passport');
 
@@ -23,12 +24,25 @@ exports.renderSignin = function(req, res) {
 exports.renderDashboard = function(req, res, next){
 	if (!req.nurse) {
 		// Use the 'response' object to render the signin page
-		res.render('nurse_dashboard', {
+		//Get all patients
+		var getPatients = Patient.find({}).select({"_id":0,"username":1,"firstName":1,"lastName":1});
+		getPatients.exec(function (err, patients) {
+			if (err) {
+				console.log(err);
+			return next(err);
+			};
+
+			console.log(patients);
+		    res.render('nurse_dashboard', {
 			// Set the page title variable
 			title: 'Dashboard',
+			//Send list of patients
+			patients: patients,
 			// Set the flash message variable
 			messages: req.flash('error') || req.flash('info')
 		});
+		});
+
 	} else {
 		return res.redirect('/');
 	}
