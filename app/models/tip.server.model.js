@@ -1,12 +1,11 @@
 // Load the module dependencies
 const mongoose = require('mongoose');
 const crypto = require('crypto');
-const Patient = require('mongoose').model('Patient');
 const Schema = mongoose.Schema;
 
 // Define a new 'TipSchema'
 const TipSchema = new Schema({
-	patient: Patient,
+	patientId: String,
     comment: String,
     created: {
 		type: Date,
