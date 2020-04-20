@@ -10,6 +10,8 @@ module.exports = function (app) {
   app.route("/video").get(patients.rendervideo);
   app.route("/symptom").get(patients.rendersymptom);
   app.route("/result").post(patients.renderesult);
+  app.route("/patientalert").get(patients.renderalert).post(patients.create);
+  app.route("/patienttips").get(patients.rendertips)
 
   // Set up the 'signin' routes
   app

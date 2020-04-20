@@ -596,3 +596,39 @@ exports.signout = function(req, res) {
 	// Redirect the patient back to the main application page
 	res.redirect('/');
 };
+
+exports.renderalert = function(req, res){
+    // Use the 'response' object to render the alert page
+    res.render('patientalert', {
+        // Set the page title variable
+        title: 'Send Alerts to Patients',
+        // Set the flash message variable
+        messages: req.flash('error') || req.flash('info')
+    });
+};
+
+
+exports.rendertips = function(req, res){
+    // Use the 'response' object to render the alert page
+    res.render('patienttips', {
+        // Set the page title variable
+        title: 'View tips',
+        // Set the flash message variable
+        messages: req.flash('error') || req.flash('info')
+    });
+};
+
+exports.create = function (req, res) {
+    const tipsandalert = new Tipsandalert();
+    tipsandalert.alert = req.body.alert;
+    //article.creator = req.body.username;
+    console.log(req.body)
+    res.render('nursealert',{
+        title: 'Send Alerts to Patients',
+        // Set the flash message variable
+        messages: req.flash('error') || req.flash('info')
+
+    })
+    //
+    //
+};

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/nurse_dashboard/nurse_tips.css" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+  <%- include('partials/patient_dashboard_nav') %>
+
+<div style="padding: 2%">
+    <h3>Send alert to your nurse</h3>
+  <form>
+		<div class="form-group">
+			<form action="create" method="post" autocomplete="on">
+        <textarea class="form-control" type="text" rows="5" name="alert" id="alert" placeholder="What's your need"></textarea>
+                <input type="submit" value="Send">
+            </form>
+        </div>
+        <div></div>
+  </form>
+</div>
+
+</body>
+</html>
