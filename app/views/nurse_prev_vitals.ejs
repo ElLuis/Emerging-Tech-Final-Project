@@ -9,25 +9,15 @@
   <%- include('partials/nurse_dashboard_nav') %>
 
 <div style="padding: 2%">
-    <p>Please input the vital signs of the patient:</p>
-  <form>
-    <div class="form-group">
-      <label for="patient">Patient:</label>
-			<input type="text" class="form-control" id="patient">
-			
-			<label for="bodyTemp">Body Temperature</label>
-			<input type="text" class="form-control" id="bodyTemp">
 
-			<label for="heartRate">Heart Rate</label>
-			<input type="text" class="form-control" id="heartRate">
-
-			<label for="bloodPressure">Blood Pressure</label>
-			<input type="text" class="form-control" id="bloodPressure">
-
-			<label for="respitoryRate">Respitory Rate</label>
-			<input type="text" class="form-control" id="respitoryRate">
-    </div>
-  </form>
+	<h3>Here is a record of vitals taken previously: </h3>
+	<hr>
+  <ul>
+    <% vitals.forEach(function(vital) { %>
+        <li><%= vital.bodyTemperature %> | <%= vital.heartRate %> <%= vital.bloodPressure %> <%= vital.respitoryRate %></li>
+    <% }); %>
+</ul>
+  
 </div>
 
 </body>

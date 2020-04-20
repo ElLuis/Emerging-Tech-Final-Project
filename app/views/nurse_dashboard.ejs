@@ -10,18 +10,14 @@
   <%- include('partials/nurse_dashboard_nav') %>
 
 <div style="padding: 2%">
-  <h2>Nurse Dashboard</h2>
+  <h2 style="text-align:center">Nurse Dashboard</h2>
+  <hr>
   <h3>Here are the Patients: </h3>
   <ul>
     <% patients.forEach(function(patient) { %>
         <li><%= patient.username %> | <%= patient.firstName %> <%= patient.lastName %></li>
     <% }); %>
-</ul>
-
-
-  <% patients.forEach(function (patient) { %>
-    <%= patient.name %> 
-  <% }) %>
+    </ul>
 
   
 </div>
