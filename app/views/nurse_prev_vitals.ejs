@@ -12,17 +12,17 @@
 
 	<h3>Here is a record of vitals taken previously: </h3>
   <hr>
-  <table border="1">
+  <table class="table">
     <tr>
-    <th>Date</th>
-    <th>Body Temperature</th>
-    <th>Heart Rate</th>
-    <th>Blood Pressure</th>
-    <th>Respiratory Rate</th>
+    <th scope="col">Date</th>
+    <th scope="col">Body Temperature</th>
+    <th scope="col">Heart Rate</th>
+    <th scope="col">Blood Pressure</th>
+    <th scope="col">Respiratory Rate</th>
     </tr>
 
     <% vitals.forEach(function(vital) { %>
-      <tr>
+      <tr scope="row">
         <td><%= vital.created %></td>  
         <td><%= vital.bodyTemperature %></td>  
         <td><%= vital.heartRate %></td>
