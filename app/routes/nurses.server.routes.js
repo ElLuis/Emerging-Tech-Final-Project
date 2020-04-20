@@ -5,6 +5,12 @@ const Nurse = require("mongoose").model("Nurse");
 // Define the routes module' method
 module.exports = function (app) {
 
+    // Set up the 'signup' routes
+    app.route("/nurse_dashboard").get(nurses.renderDashboard);
+    app.route("/nurse_vitals").get(nurses.renderVitals);
+    app.route("/nurse_prev_vitals").get(nurses.renderPrevVitals);
+    app.route("/nurse_tips").get(nurses.renderTips);
+
     app
     .route("/signin_nurse")
     .get(nurses.renderSignin)
