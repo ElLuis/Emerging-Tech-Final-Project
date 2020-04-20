@@ -11,7 +11,7 @@ module.exports = function (app) {
   app.route("/symptom").get(patients.rendersymptom);
   app.route("/result").post(patients.renderesult);
   app.route("/patientalert").get(patients.renderalert).post(patients.create);
-  app.route("/patienttips").get(patients.rendertips)
+  app.route("/patienttips").get(patients.renderTips)
 
   // Set up the 'signin' routes
   app
