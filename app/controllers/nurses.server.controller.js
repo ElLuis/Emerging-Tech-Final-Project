@@ -62,7 +62,7 @@ exports.renderVitals = function(req, res, next){
 exports.renderPrevVitals = function(req, res, next){
 	var patientId = req.session.patientId;
 
-	var getVitals = Vital.find({}).select({"_id":0,"bodyTemperature":1,"heartRate":1,"bloodPressure":1,"respitoryRate":1}).where({"patientId":patientId});
+	var getVitals = Vital.find({}).select({"_id":0,"created":1,"bodyTemperature":1,"heartRate":1,"bloodPressure":1,"respitoryRate":1}).where({"patientId":patientId});
 
 	getVitals.exec(function (err, vitals) {
 		if (err) {

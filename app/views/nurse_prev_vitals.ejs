@@ -14,6 +14,7 @@
   <hr>
   <table border="1">
     <tr>
+    <th>Date</th>
     <th>Body Temperature</th>
     <th>Heart Rate</th>
     <th>Blood Pressure</th>
@@ -22,6 +23,7 @@
 
     <% vitals.forEach(function(vital) { %>
       <tr>
+        <td><%= vital.created %></td>  
         <td><%= vital.bodyTemperature %></td>  
         <td><%= vital.heartRate %></td>
         <td><%= vital.bloodPressure %></td>   
