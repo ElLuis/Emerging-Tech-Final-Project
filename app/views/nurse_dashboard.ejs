@@ -13,9 +13,9 @@
   <h2 style="text-align:center">Nurse Dashboard</h2>
   <hr>
   <h3>Here are the Patients: </h3>
-  <ul>
+  <ul class="list-group">
     <% patients.forEach(function(patient) { %>
-        <li><%= patient.username %> | <%= patient.firstName %> <%= patient.lastName %></li>
+        <li class="list-group-item"><b>Username:</b> <%= patient.username %> | <b>Full Name:</b> <%= patient.firstName %> <%= patient.lastName %></li>
     <% }); %>
     </ul>
 

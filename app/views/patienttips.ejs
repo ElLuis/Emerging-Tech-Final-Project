@@ -11,11 +11,16 @@
 
 <div style="padding: 2%">
     <h3>Tips from your nurse</h3>
-    <ul>
-      <% tips.forEach(function(tip) { %>
-          <li><%= tip.created %> | <%= tip.comment %></li>
-      <% }); %>
-  </ul>
+    <% tips.forEach(function(tip) { %>
+      <div class="card" style="width: 18rem;margin-left: 2%;margin-right:2%;float: left"">
+        <div class="card-body">
+          <h5 class="card-title"><%= tip.title %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><%= tip.created %></h6>
+          <p class="card-text"><%= tip.comment %></p>
+        </div>
+      </div>
+    <% }); %>
+
         </div>
         <div></div>
   </form>

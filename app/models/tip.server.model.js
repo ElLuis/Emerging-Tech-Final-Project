@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 // Define a new 'TipSchema'
 const TipSchema = new Schema({
 	patientId: String,
+	title: String,
     comment: String,
     created: {
 		type: Date,

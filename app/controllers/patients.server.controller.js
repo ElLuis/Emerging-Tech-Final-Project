@@ -617,7 +617,7 @@ exports.renderalert = function(req, res){
         var username = req.session.username;
 
 		//Get all patients
-		var getTips = Tip.find({}).select({"_id":0,"created":1,"comment":1,"lastName":1}).where({"patientId":username});
+		var getTips = Tip.find({}).select({"_id":0,"title":1,"created":1,"comment":1,"lastName":1}).where({"patientId":username});
 		getTips.exec(function (err, tips) {
 			if (err) {
 				console.log(err);
