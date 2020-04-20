@@ -641,7 +641,7 @@ exports.renderalert = function(req, res){
 }
 
  exports.create = function (req, res) {
-    const tipsandalert = new Tipsandalert();
+    const tipsandalert = new Tip();
     tipsandalert.alert = req.body.alert;
     //article.creator = req.body.username;
     console.log(req.body)
